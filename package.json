@@ -1,0 +1,15 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "a add delete method",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "saloni",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Apllication Form</title>
+<link rel="icon" href="/icon.png" type="image/x-icon">
+<script  src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var app = angular.module("module",[])
+
+app.controller('main', function ($scope, $window) {
+    $scope.values = [
+        { id: 111, name: "rohan",email:"roham@gmail.com" }
+       
+        ];
+
+    $scope.Add = function () {
+        //Add the new item to the Array.
+        console.log("sdfgsfg")
+        var val = {};
+        val.id=$scope.id;
+        val.name = $scope.name;
+        val.email=$scope.email;
+        $scope.values.push(val);
+        //Clear the TextBoxes.
+        $scope.id="";
+        $scope.name = "";
+        $scope.email = "";
+    };
+
+    $scope.Delete = function (index) {
+        //Find the record using Index from Array.
+        var id = $scope.values[index].id;
+        if ($window.confirm("Do you want to delete: " + id)) {
+            //Remove the item from Array using Index.
+            $scope.values.splice(index, 1);
+        }
+    }
+    $scope.Update = function () {
+
+            var index = getSelectedIndex(id);
+                var m = $scope.values[index];
+                $scope.id = values.id;
+               
+                $scope.name = values.name;
+                $scope.email=values.email;
+               
+    }
+
+});
+</script>
+</head>
+
+
+<body ng-app="module" ng-controller="main" class="body" >
+          <div class="container">
+        <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody ng-repeat="m in values">
+              <tr>
+                  <td>{{m.id}}</td>
+                  <td>{{m.name}}</td>
+                  <td>{{m.email}}</td>
+                  <td><input type="button" ng-click="Delete($index)" value="Delete" class="btn btn-danger" /></td>
+                  <td><input type="button" ng-click="Update" value="Update" class="btn btn-danger" /></td>
+              </tr>
+          </tbody>
+          <tfoot>
+              <tr>
+                  <td><input type="text" name="id" ng-model="id" /></td>
+                  <td><input type="text" name="name" ng-model="name" /></td>
+                  <td><input type="text"  name="email" ng-model="email" /></td>
+                  <td><input type="button" ng-click="Add()" value="Add" class="btn btn-primary"/></td>
+              </tr>
+          </tfoot>
+      </table>
+    </div>   
+    
+            
+            <div ng-view></div>
+      
+            
+</body>
+</html>
